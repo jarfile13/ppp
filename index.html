@@ -3,428 +3,204 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PulseVisuals - Лучший мод для Minecraft</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>Koyja - Чит</title>
     <style>
-        /* Сброс стилей */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #050508; /* Очень темный фон */
-            font-family: 'Inter', sans-serif;
-            color: #ffffff;
-            height: 100vh;
-            overflow: hidden;
+            min-height: 100vh;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #0f0c29, #302b63, #24243e);
+            overflow: hidden;
             position: relative;
         }
 
-        /* Фоновое свечение (имитация туманности) */
+        /* Анимированный фон */
         body::before {
             content: '';
             position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at center, rgba(30, 20, 60, 0.4) 0%, rgba(5, 5, 8, 1) 70%);
-            z-index: -1;
-            pointer-events: none;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
         }
 
-        /* --- Навигация --- */
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 24px 60px;
-            width: 100%;
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .container {
+            position: relative;
+            z-index: 1;
+            text-align: center;
+            padding: 60px 80px;
+            background: rgba(20, 20, 40, 0.7);
+            backdrop-filter: blur(20px);
+            border-radius: 30px;
+            border: 1px solid rgba(138, 43, 226, 0.3);
+            box-shadow: 0 0 60px rgba(138, 43, 226, 0.3), inset 0 0 60px rgba(138, 43, 226, 0.05);
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
         }
 
         .logo {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            font-weight: 700;
-            font-size: 18px;
-            letter-spacing: -0.5px;
-        }
-
-        .logo svg {
-            width: 24px;
-            height: 24px;
-            fill: #8b5cf6; /* Фиолетовый цвет логотипа */
-        }
-
-        nav {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        nav a {
-            color: #888899;
-            text-decoration: none;
-            font-size: 14px;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #fff;
-        }
-
-        /* Активная ссылка (Бесплатная версия) */
-        nav a.active {
-            color: #8b5cf6;
-            border-bottom: 1px solid #8b5cf6;
-            padding-bottom: 2px;
-        }
-
-        .nav-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-        }
-
-        .icon-btn {
-            background: none;
-            border: none;
-            cursor: pointer;
-            color: #666;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .icon-btn svg {
-            width: 20px;
-            height: 20px;
-            fill: currentColor;
-        }
-
-        .login-btn {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            color: white;
-            border: none;
-            padding: 10px 24px;
-            border-radius: 20px;
-            font-weight: 500;
-            font-size: 14px;
-            cursor: pointer;
-            transition: opacity 0.3s;
-            box-shadow: 0 0 15px rgba(124, 58, 237, 0.4);
-        }
-
-        .login-btn:hover {
-            opacity: 0.9;
-        }
-
-        /* --- Основной контент --- */
-        main {
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 0 20px;
-            margin-top: -60px; /* Небольшой сдвиг вверх для баланса */
-        }
-
-        h1 {
-            font-size: 56px;
+            font-size: 72px;
             font-weight: 900;
-            line-height: 1.1;
-            margin-bottom: 24px;
-            max-width: 800px;
-            letter-spacing: -1px;
+            letter-spacing: 8px;
+            background: linear-gradient(135deg, #a855f7, #6366f1, #ec4899);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 10px;
+            text-shadow: 0 0 40px rgba(168, 85, 247, 0.5);
+            animation: glow 2s ease-in-out infinite alternate;
         }
 
-        p.description {
-            font-size: 15px;
-            color: #a0a0b0;
-            max-width: 600px;
-            line-height: 1.6;
-            margin-bottom: 40px;
+        @keyframes glow {
+            from { filter: drop-shadow(0 0 20px rgba(168, 85, 247, 0.6)); }
+            to { filter: drop-shadow(0 0 40px rgba(99, 102, 241, 0.8)); }
         }
 
-        /* --- Кнопка скачивания (Стиль как у Login) --- */
+        .subtitle {
+            color: rgba(200, 200, 255, 0.6);
+            font-size: 18px;
+            margin-bottom: 50px;
+            letter-spacing: 2px;
+        }
+
         .download-btn {
-            background: linear-gradient(135deg, #7c3aed, #6d28d9);
-            color: white;
-            border: none;
-            padding: 16px 48px;
-            border-radius: 30px; /* Более скругленная */
-            font-weight: 700;
-            font-size: 16px;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 0 25px rgba(124, 58, 237, 0.5); /* Свечение */
-            text-decoration: none;
             display: inline-flex;
             align-items: center;
-            gap: 10px;
+            gap: 15px;
+            padding: 20px 50px;
+            font-size: 22px;
+            font-weight: 700;
+            color: #fff;
+            background: linear-gradient(135deg, #7c3aed, #4f46e5);
+            border: none;
+            border-radius: 60px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(124, 58, 237, 0.4);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .download-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .download-btn:hover::before {
+            left: 100%;
         }
 
         .download-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 0 35px rgba(124, 58, 237, 0.7);
-            background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 40px rgba(124, 58, 237, 0.6);
+        }
+
+        .download-btn:active {
+            transform: translateY(-1px) scale(1.02);
         }
 
         .download-btn svg {
-            width: 20px;
-            height: 20px;
+            width: 28px;
+            height: 28px;
             fill: currentColor;
+            animation: bounce 2s ease-in-out infinite;
         }
 
-        /* --- Плеер (Нижний левый угол) --- */
-        .player-widget {
-            position: absolute;
-            bottom: 40px;
-            left: 40px;
-            background: rgba(20, 20, 25, 0.6);
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-            border-radius: 12px;
-            padding: 12px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            width: 300px;
-            z-index: 10;
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-4px); }
         }
 
-        .album-art {
-            width: 48px;
-            height: 48px;
-            border-radius: 6px;
-            background: url('https://images.unsplash.com/photo-1614613535308-eb5fbd3d2c17?q=80&w=100&auto=format&fit=crop') center/cover;
-            position: relative;
-        }
-        
-        .album-art::after {
-            content: '';
-            position: absolute;
-            bottom: 2px;
-            right: 2px;
-            width: 8px;
-            height: 8px;
-            background: #7c3aed;
-            border-radius: 50%;
-            border: 1px solid #000;
-        }
-
-        .track-info {
-            flex: 1;
-        }
-
-        .track-name {
-            font-size: 13px;
-            font-weight: 600;
-            color: #fff;
-        }
-
-        .artist-name {
-            font-size: 11px;
-            color: #888;
-        }
-
-        .progress-bar {
-            width: 100%;
-            height: 3px;
-            background: rgba(255,255,255,0.1);
-            border-radius: 2px;
-            margin-top: 6px;
-            position: relative;
-        }
-
-        .progress-fill {
-            width: 60%;
-            height: 100%;
-            background: #7c3aed;
-            border-radius: 2px;
-        }
-
-        .time-stamps {
-            display: flex;
-            justify-content: space-between;
-            font-size: 9px;
-            color: #666;
-            margin-top: 2px;
-        }
-
-        .controls {
-            display: flex;
-            gap: 8px;
-            margin-top: 4px;
-        }
-        
-        .controls svg {
-            width: 12px;
-            height: 12px;
-            fill: #aaa;
-            cursor: pointer;
-        }
-
-        /* --- Нижнее меню (категории) --- */
-        .bottom-nav {
-            position: absolute;
-            bottom: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 30px;
+        .version {
+            color: rgba(200, 200, 255, 0.4);
             font-size: 14px;
-            color: #555;
-            font-weight: 500;
+            margin-top: 25px;
+            letter-spacing: 1px;
         }
 
-        .bottom-nav span {
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .bottom-nav span.active {
-            color: #fff;
-        }
-
-        /* --- Поиск (Нижний правый угол) --- */
-        .search-area {
+        /* Мерцающие частицы */
+        .particle {
             position: absolute;
-            bottom: 40px;
-            right: 40px;
-            display: flex;
-            align-items: center;
-            gap: 15px;
+            width: 4px;
+            height: 4px;
+            background: #a855f7;
+            border-radius: 50%;
+            pointer-events: none;
+            opacity: 0.5;
+            animation: particleFloat linear infinite;
         }
 
-        .search-bar {
-            background: rgba(255,255,255,0.05);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 8px;
-            padding: 8px 12px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-            color: #666;
-            font-size: 12px;
-            width: 200px;
-        }
-        
-        .search-bar svg {
-            width: 12px;
-            height: 12px;
-            fill: #666;
-        }
-
-        .theme-toggle {
-            color: #666;
-            cursor: pointer;
-        }
-
-        /* Адаптив для мобильных */
-        @media (max-width: 768px) {
-            header { padding: 20px; }
-            nav { display: none; } /* Скрываем меню на мобильных */
-            h1 { font-size: 32px; }
-            .player-widget { display: none; }
-            .bottom-nav { display: none; }
-            .search-area { display: none; }
-            main { margin-top: 0; }
+        @keyframes particleFloat {
+            from { transform: translateY(100vh) scale(0); opacity: 0; }
+            10% { opacity: 0.5; }
+            90% { opacity: 0.5; }
+            to { transform: translateY(-10vh) scale(1); opacity: 0; }
         }
     </style>
 </head>
 <body>
-
-    <header>
-        <div class="logo">
-            <!-- Иконка пульса -->
+    <div class="container">
+        <h1 class="logo">KOYJA</h1>
+        <p class="subtitle">ЧИТ ДЛЯ ИГР</p>
+        
+        <a href="koyja-1.3.6.exe" download class="download-btn">
             <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-                <path d="M3 12H7L10 4L14 20L17 12H21" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+                <path d="M12 16l-5-5h3V4h4v7h3l-5 5zm-7 2h14v2H5v-2z"/>
             </svg>
-            PulseVisuals
-        </div>
-        <nav>
-            <a href="#">Главная</a>
-            <a href="#">Функции</a>
-            <a href="#">Тарифы</a>
-            <a href="#">Видеообзоры</a>
-            <a href="#" class="active">Бесплатная версия</a>
-        </nav>
-        <div class="nav-right">
-            <!-- Иконки глобуса и языка (упрощенные) -->
-            <button class="icon-btn" title="Язык">
-                <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 17.93c-3.95-.49-7-3.85-7-7.93 0-.62.08-1.21.21-1.79L9 15v1c0 1.1.9 2 2 2v1.93zm6.9-2.54c-.26-.81-1-1.39-1.9-1.39h-1v-3c0-.55-.45-1-1-1H8v-2h2c.55 0 1-.45 1-1V7h2c1.1 0 2-.9 2-2v-.41c2.93 1.19 5 4.06 5 7.41 0 2.08-.8 3.97-2.1 5.39z"/></svg>
-            </button>
-            <button class="icon-btn" title="Тема">
-                <svg viewBox="0 0 24 24"><path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9 9-4.03 9-9-4.03-9-9-9zm0 16c-3.86 0-7-3.14-7-7s3.14-7 7-7 7 3.14 7 7-3.14 7-7 7z"/></svg>
-            </button>
-            <button class="login-btn">Логин</button>
-        </div>
-    </header>
-
-    <main>
-        <h1>Лучший мод для<br>комфортной игры в Minecraft</h1>
-        <p class="description">
-            Pulse создан для тех, кто ценит стиль, удобство и максимальную производительность.<br>
-            Плавный геймплей, продуманный интерфейс и стабильная работа дают вам реальное<br>
-            превосходство в игре.
-        </p>
-
-        <!-- Кнопка скачивания -->
-        <a href="pulseloader.exe" download="pulseloader.exe" class="download-btn">
-            <svg viewBox="0 0 24 24"><path d="M19 9h-4V3H9v6H5l7 7 7-7zM5 18v2h14v-2H5z"/></svg>
-            Скачать
+            Скачать koyja-1.3.6
         </a>
-    </main>
-
-    <!-- Виджет плеера -->
-    <div class="player-widget">
-        <div class="album-art"></div>
-        <div class="track-info">
-            <div class="track-name">Alien</div>
-            <div class="artist-name">@lilymedy</div>
-            <div class="progress-bar">
-                <div class="progress-fill"></div>
-            </div>
-            <div class="time-stamps">
-                <span>2:10</span>
-                <span>2:35</span>
-            </div>
-            <div class="controls">
-                <!-- Иконки перемотки/паузы -->
-                <svg viewBox="0 0 24 24"><path d="M6 6h2v12H6zm3.5 6l8.5 6V6z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
-                <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
-            </div>
-        </div>
+        
+        <p class="version">Версия: 1.3.6 | Размер: 4.2 MB</p>
     </div>
 
-    <!-- Нижнее меню -->
-    <div class="bottom-nav">
-        <span class="active">Visuals</span>
-        <span>HUD</span>
-        <span>Utilities</span>
-    </div>
+    <script>
+        // Создание мерцающих частиц на фоне
+        function createParticles() {
+            const count = 30;
+            for (let i = 0; i < count; i++) {
+                const particle = document.createElement('div');
+                particle.className = 'particle';
+                particle.style.left = Math.random() * 100 + '%';
+                particle.style.width = particle.style.height = (Math.random() * 4 + 2) + 'px';
+                particle.style.animationDuration = (Math.random() * 8 + 6) + 's';
+                particle.style.animationDelay = (Math.random() * 10) + 's';
+                particle.style.background = ['#a855f7', '#6366f1', '#ec4899'][Math.floor(Math.random() * 3)];
+                document.body.appendChild(particle);
+            }
+        }
+        createParticles();
 
-    <!-- Поиск -->
-    <div class="search-area">
-        <div class="search-bar">
-            <svg viewBox="0 0 24 24"><path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/></svg>
-            Search
-        </div>
-        <div class="theme-toggle">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
-        </div>
-    </div>
-
+        // Обработка клика по кнопке скачивания
+        document.querySelector('.download-btn').addEventListener('click', function(e) {
+            // Можно добавить дополнительную логику, например уведомление
+            console.log('Начинается загрузка koyja-1.3.6.exe');
+        });
+    </script>
 </body>
 </html>
